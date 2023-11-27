@@ -1,5 +1,6 @@
 #antes de todo o más bien, transversalmente, habría que poner unos botones para volver para atrás, volver al inicio, tal vez un iframe para buscar info en internet en la misma página...
 #también, no sé bien dónde, pero habría que agregar un loop que cuando se equivoquen de opción vuelva a hacer la pregunta, supongo que con un while...
+#cambiar la función error por excepción para que no se rompa todo.
 def error():
     print("revisá por favor la opción ingresada.")
 
