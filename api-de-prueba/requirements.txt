@@ -1,8 +1,23 @@
+#Cada vez que instalo algo, freezamos para instalar en todos los entornos 
+#pip install -r requirements.txt
+#Agregué Flask-mysql
+
+beautifulsoup4==4.12.2
 blinker==1.7.0
-click==8.1.7       
-colorama==0.4.6    
-Flask==3.0.0       
+bs4==0.0.1
+certifi==2023.11.17
+charset-normalizer==3.3.2
+click==8.1.7
+colorama==0.4.6
+cryptografy==3.0.0
+Flask==3.0.0
+Flask-MySQL==1.5.2
+idna==3.6
 itsdangerous==2.1.2
-Jinja2==3.1.2      
-MarkupSafe==2.1.3  
-Werkzeug==3.0.1 
+Jinja2==3.1.2
+MarkupSafe==2.1.3
+PyMySQL==1.1.0
+requests==2.31.0
+soupsieve==2.5
+urllib3==2.1.0
+Werkzeug==3.0.1
