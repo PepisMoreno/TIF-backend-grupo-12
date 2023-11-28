@@ -1,6 +1,6 @@
-#Ult 27-11 Sofi
 from flask import Flask, render_template, request 
 #Sofi: No me toma flaskext.mysql, puse sólo flask
+#Pepis: a mi tampoco me lo toma. Request me dice que no está accesado
 from flaskext.mysql import MySQL
 
 #Sofi: request sirve para recolectar la data que viene del formulario
