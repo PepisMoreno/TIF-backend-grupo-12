@@ -1,5 +1,6 @@
 #Cada vez que instalo algo, freezamos para instalar en todos los entornos 
 #pip install -r requirements.txt
+#Agregué Flask-mysql
 
 beautifulsoup4==4.12.2
 blinker==1.7.0
