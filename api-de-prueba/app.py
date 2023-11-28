@@ -1,14 +1,42 @@
+#Ult 27-11 Sofi
 from flask import Flask, render_template, request 
-#No me toma flaskext.mysql
-# from flasketc.mysql import MySQL
+#Sofi: No me toma flaskext.mysql, puse sólo flask
+from flask import MySQL
 
-#request sirve para recolectar la data que viene del formulario
+#Sofi: request sirve para recolectar la data que viene del formulario
 app = Flask(__name__)
-mysql = Flask(__name__)
+#Sofi: InstanciaMySQL
+mysql = MySQL()
 
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = '123' #aÑADIR CONTRASEÑA?
+app.config['MYSQL_DATABASE_DB'] = 'plantas_bd'
 
+#Sofi: Acá la inicializamos
+mysql.init_app(app)
+
+#Decorador
 @app.route("/",methods=["GET"])
+
+#Sofi: para probar mysql 
+#def index():
+#    conn = mysql.connect()
+#    cursor = conn.cursor()
+
+#    sql="INSERT INTO `características` VALUES (1,'sin luz directa','mucha','suelo/roca/troncos','superficies porosas','-')"
+#    cursor.execute(sql)
+
+#    conn.commit()
+
+#    return render_template('templates/index.html')
+
 def home():
     return render_template("index.html")
 
+
+#Recordar: para correr app es python source/app.py
+#if __name__ == '__main__':
+#    app.run(debug=True)
+    
 
