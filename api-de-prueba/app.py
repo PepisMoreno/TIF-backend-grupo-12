@@ -1,24 +1,15 @@
-#Ult 27-11 Sofi
 from flask import Flask, render_template, request 
-#Sofi: No me toma flaskext.mysql, puse sólo flask
-from flaskext.mysql import MySQL
-
-#Sofi: request sirve para recolectar la data que viene del formulario
+#request sirve para recolectar la data que viene del formulario
 app = Flask(__name__)
-#Sofi: InstanciaMySQL
-mysql = MySQL()
 
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '123' #aÑADIR CONTRASEÑA?
-app.config['MYSQL_DATABASE_DB'] = 'plantas_bd'
-
-#Sofi: Acá la inicializamos
-mysql.init_app(app)
-
-#Decorador
-@app.route("/",methods=["GET"])
+@app.route("/")
 def home():
     return render_template("index.html")
 
-
+#@app.route() #completar acá la ruta
+#def consulta():
+ #   nombrePlanta = request.form('Nombre')
+  #  consulta = request.form('consulta')
+    #acá iria algo para usar esa data que me mando el usuario y buscar en la BD la respuesta que saldrá por ouput
+   # output= print("buenas")#acá va la respuesta que le damos al usuario, a su consulta. sacada de la BD no se como
+    #return #podriamos hacer con un if else, si el usuario pregunto por la luz o el agua o etc, le damos tal o cual respuesta.
