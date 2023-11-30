@@ -28,7 +28,7 @@ def create(): #en esta función vamos a recibir la info que recolectamos en el f
 def store():
     nombrePlanta = request.form('nom')
     nombrecient = request.form('nomcient')
-    fotoplanta = request.files('foto')
+    fotoplanta = request.files('nomfoto')
 
     sql= "INSERT INTO plantas (nombre_comun, nombre_científico, foto) VALUES (%S, %S, %S)";
     datos=(nombrePlanta,nombrecient,fotoplanta.filename)
@@ -36,6 +36,8 @@ def store():
     cursor= conn.cursor()
     cursor.execute(sql, datos)
     conn.commit()
+
+    return render_template("index.html")
 
 #@app.route() #completar acá la ruta
 #def consulta():
