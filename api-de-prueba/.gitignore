@@ -1,3 +1,5 @@
 __pycache__/
 .venv/
 .venvScriptsactivate
+.venv/pyvenv.cfg
+TIF-BACKEND-GRUPO-12/.venv/.venv
