@@ -16,7 +16,7 @@ def obtener_conexion():
     return pymysql.connect(host="localhost",
                            user="root",
                            password="holamundo34",
-                           db="plantas_bd")
+                           db="plantas2")
 
 #creamos otro decorador, para q el usuario ingrese info a la BD
 @app.route("/create") #declaramos la ruta /create
