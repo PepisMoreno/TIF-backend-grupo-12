@@ -11,7 +11,7 @@ Al importar estos módulos y clases, estamos preparando nuestro entorno de desar
 
 '''
 # Importa las clases Flask, jsonify y request del módulo flask
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 # Importa la clase CORS del módulo flask_cors
 from flask_cors import CORS
 # Importa la clase SQLAlchemy del módulo flask_sqlalchemy
@@ -128,6 +128,7 @@ def get_Plantas():
     all_plantas = Planta.query.all()  # Obtiene todos los registros de la tabla de productos
     result = plantas_schema.dump(all_plantas)  # Serializa los registros en formato JSON
     return jsonify(result)  # Retorna el JSON de todos los registros de la tabla
+    return render_template('templates/Identidificador_de_plantas.html')
 
 '''
 El código que sigue a continuación termina de resolver la API de gestión de productos, a continuación se destaca los principales detalles de cada endpoint, incluyendo su funcionalidad y el tipo de respuesta que se espera.
