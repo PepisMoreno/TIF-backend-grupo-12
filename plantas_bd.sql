@@ -19,19 +19,19 @@
 -- Table structure for table `características`
 --
 
-DROP TABLE IF EXISTS `características`;
+DROP TABLE IF EXISTS `caracteristicas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `características` (
-  `id_características` int NOT NULL,
+CREATE TABLE `caracteristicas` (
+  `id_caracteristicas` int NOT NULL,
   `iluminacion` varchar(45) NOT NULL,
   `riego` varchar(45) NOT NULL,
   `ubicación` char(20) NOT NULL,
   `suelo` varchar(45) NOT NULL,
   `plaga` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id_características`,`iluminacion`),
-  KEY `fk_características_plantas_idx` (`id_características`),
-  CONSTRAINT `fk_características_plantas` FOREIGN KEY (`id_características`) REFERENCES `plantas` (`id`)
+  PRIMARY KEY (`id_caracteristicas`,`iluminacion`),
+  KEY `fk_caracteristicas_plantas_idx` (`id_caracteristicas`),
+  CONSTRAINT `fk_caracteristicas_plantas` FOREIGN KEY (`id_caracteristicas`) REFERENCES `plantas` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,10 +39,10 @@ CREATE TABLE `características` (
 -- Dumping data for table `características`
 --
 
-LOCK TABLES `características` WRITE;
-/*!40000 ALTER TABLE `características` DISABLE KEYS */;
-INSERT INTO `características` VALUES (1,'sin luz directa','mucha','suelo/roca/troncos','superficies porosas','-'),(2,'luz indirecta','en verano todos los días','interior y exterior','ambas','cochinillas'),(3,'mucha','media','exterior','tierra húmeda','la enfermedad nematodo'),(4,'mucha','poco riego','exterior','Tierra','Resiste las plagas'),(5,'mucha','frecuentes, poco abundantes','exterior','tierra húmeda','-'),(6,'mucha','mantenerlo húmedo sin encharcar','exterior','maceta o suelo con tierra húmeda','chancro del cipres (hongo)'),(7,'media','poco riego','exterior','suelo húmedo y profundo','longicornios'),(8,'mucha luz solar','media','exterior','maceta y tierra','Pulgón'),(9,'luz solar indirecta','abundante, sin encharcar','interior','maceta','cochinillas y pulgón'),(10,'media','riego abundante','exterior','suelo arcilloso bien drenado','insectos, roedores, aves'),(11,'mucha luz solar','frecuente, poco abundante','interior y exterior','maceta y tierra','Pulgón, caracoles y babosas'),(12,'alta','poco riego','interior y exterior','maceta con drenaje','Hongos'),(13,'mucha luz solar','riego frecuente en verano','exterior','maceta y tierra','Hongos'),(14,'media','abundante, sin encharcar','exterior','suelos húmedos','Moho y hongos'),(15,'alta','riego medio a la sombra','exterior','suelo arcilloso bien drenado','araña roja, chinches'),(16,'mucha luz, indirecta','poco riego','interior','maceta con drenaje','Cochinillas, hongos, ácaro'),(17,'mucha luz solar','riego moderado','interior','Maceta grande','Cochinillas y arañas rojas'),(18,'mucha luz solar indirecta','riego moderado','interior','macetas de suelo o colgantes','Pulgón verde'),(19,'mucha luz','poco riego, sin mojar ramas','Exterior','suelo o maceta c/ buen drenaje','Cochinillas, larvas'),(20,'mucha luz solar','poco riego','exterior','Maceta','Pulgón y cochinillas'),(21,'mucha luz','riego abundante','exterior','suelos húmedos c/ buen drenaje','Hongos'),(22,'poca luz, indirecta','riego abundante','interior','maceta','Araña roja y cochinilla'),(23,'mucha luz, indirecta','moderado, sin encharcar','Exterior','suelo o maceta c/ buen drenaje','Pulgón y hongos'),(24,'luz solar indirecta','riego moderado, sin encharcar','interior','Maceta - sustrato húmedo','mosca blanca, cochinillas'),(25,'mucha luz','riego abundante, sin encharcar','exterior','suelos húmedos c/ buen drenaje','Pulgón, mosca blanca'),(26,'luz moderada, indirecta','poco riego','interior','maceta','Hongos'),(27,'luz abundante, indirecta','poco riego','interior','maceta','Cochinillas'),(28,'luz abundante, indirecta','riego moderado','interior y exterior','maceta o suelo c/ sustrato húmedo','Araña roja, mosca blanca'),(29,'mucha luz directa','riego moderado','exterior','suelo arenoso y húmedo','Araña roja, mosca blanca'),(30,'luz moderada, indirecta','riego moderado','interior','maceta','Araña roja, pulgón, hongos'),(31,'luz moderada, indirecta','riego moderado','interior','maceta','Pulgón, ácaros, trips'),(32,'luz abundante, indirecta','riego moderado, sin encharcar','interior y exterior','maceta','Hongos'),(33,'luz directa abundante','riego abundante','exterior','suelo c/ buen drenaje','Cochinilla, ácaro, pulgón'),(34,'luz directa abundante','riego escaso','exterior','suelos poco húmedos','Prays, mosca, cochinilla'),(35,'luz solar directa','riego moderado','exterior','maceta o suelo','Pulgón, cochinilla'),(36,'luz abundante, indirecta','riego frecuente','exterior','maceta o suelo húmedo','Pulgón, trip, ácaros'),(37,'luz moderada, indirecta','riego moderado','interior','maceta','Cochinilla'),(38,'luz abundante, directa','poco riego','exterior','maceta o tierra','Thrips, pulgón, minador'),(39,'luz moderada, indirecta','riego moderado','exterior','suelo c/ buen drenaje','Cochinillas'),(40,'luz abundante, indirecta','riego moderado','interior','maceta o suelo húmedo','Ácaros y cochinillas'),(41,'luz moderada, indirecta','riego moderado','interior','maceta','Araña roja, pulgón, cochinilla');
-/*!40000 ALTER TABLE `características` ENABLE KEYS */;
+LOCK TABLES `caracteristicas` WRITE;
+/*!40000 ALTER TABLE `caracteristicas` DISABLE KEYS */;
+INSERT INTO `caracteristicas` VALUES (1,'sin luz directa','mucha','suelo/roca/troncos','superficies porosas','-'),(2,'luz indirecta','en verano todos los días','interior y exterior','ambas','cochinillas'),(3,'mucha','media','exterior','tierra húmeda','la enfermedad nematodo'),(4,'mucha','poco riego','exterior','Tierra','Resiste las plagas'),(5,'mucha','frecuentes, poco abundantes','exterior','tierra húmeda','-'),(6,'mucha','mantenerlo húmedo sin encharcar','exterior','maceta o suelo con tierra húmeda','chancro del cipres (hongo)'),(7,'media','poco riego','exterior','suelo húmedo y profundo','longicornios'),(8,'mucha luz solar','media','exterior','maceta y tierra','Pulgón'),(9,'luz solar indirecta','abundante, sin encharcar','interior','maceta','cochinillas y pulgón'),(10,'media','riego abundante','exterior','suelo arcilloso bien drenado','insectos, roedores, aves'),(11,'mucha luz solar','frecuente, poco abundante','interior y exterior','maceta y tierra','Pulgón, caracoles y babosas'),(12,'alta','poco riego','interior y exterior','maceta con drenaje','Hongos'),(13,'mucha luz solar','riego frecuente en verano','exterior','maceta y tierra','Hongos'),(14,'media','abundante, sin encharcar','exterior','suelos húmedos','Moho y hongos'),(15,'alta','riego medio a la sombra','exterior','suelo arcilloso bien drenado','araña roja, chinches'),(16,'mucha luz, indirecta','poco riego','interior','maceta con drenaje','Cochinillas, hongos, ácaro'),(17,'mucha luz solar','riego moderado','interior','Maceta grande','Cochinillas y arañas rojas'),(18,'mucha luz solar indirecta','riego moderado','interior','macetas de suelo o colgantes','Pulgón verde'),(19,'mucha luz','poco riego, sin mojar ramas','Exterior','suelo o maceta c/ buen drenaje','Cochinillas, larvas'),(20,'mucha luz solar','poco riego','exterior','Maceta','Pulgón y cochinillas'),(21,'mucha luz','riego abundante','exterior','suelos húmedos c/ buen drenaje','Hongos'),(22,'poca luz, indirecta','riego abundante','interior','maceta','Araña roja y cochinilla'),(23,'mucha luz, indirecta','moderado, sin encharcar','Exterior','suelo o maceta c/ buen drenaje','Pulgón y hongos'),(24,'luz solar indirecta','riego moderado, sin encharcar','interior','Maceta - sustrato húmedo','mosca blanca, cochinillas'),(25,'mucha luz','riego abundante, sin encharcar','exterior','suelos húmedos c/ buen drenaje','Pulgón, mosca blanca'),(26,'luz moderada, indirecta','poco riego','interior','maceta','Hongos'),(27,'luz abundante, indirecta','poco riego','interior','maceta','Cochinillas'),(28,'luz abundante, indirecta','riego moderado','interior y exterior','maceta o suelo c/ sustrato húmedo','Araña roja, mosca blanca'),(29,'mucha luz directa','riego moderado','exterior','suelo arenoso y húmedo','Araña roja, mosca blanca'),(30,'luz moderada, indirecta','riego moderado','interior','maceta','Araña roja, pulgón, hongos'),(31,'luz moderada, indirecta','riego moderado','interior','maceta','Pulgón, ácaros, trips'),(32,'luz abundante, indirecta','riego moderado, sin encharcar','interior y exterior','maceta','Hongos'),(33,'luz directa abundante','riego abundante','exterior','suelo c/ buen drenaje','Cochinilla, ácaro, pulgón'),(34,'luz directa abundante','riego escaso','exterior','suelos poco húmedos','Prays, mosca, cochinilla'),(35,'luz solar directa','riego moderado','exterior','maceta o suelo','Pulgón, cochinilla'),(36,'luz abundante, indirecta','riego frecuente','exterior','maceta o suelo húmedo','Pulgón, trip, ácaros'),(37,'luz moderada, indirecta','riego moderado','interior','maceta','Cochinilla'),(38,'luz abundante, directa','poco riego','exterior','maceta o tierra','Thrips, pulgón, minador'),(39,'luz moderada, indirecta','riego moderado','exterior','suelo c/ buen drenaje','Cochinillas'),(40,'luz abundante, indirecta','riego moderado','interior','maceta o suelo húmedo','Ácaros y cochinillas'),(41,'luz moderada, indirecta','riego moderado','interior','maceta','Araña roja, pulgón, cochinilla');
+/*!40000 ALTER TABLE `caracteristicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -55,7 +55,7 @@ DROP TABLE IF EXISTS `plantas`;
 CREATE TABLE `plantas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre_comun` varchar(45) NOT NULL,
-  `nombre_científico` varchar(30) NOT NULL,
+  `nombre_cientifico` varchar(30) NOT NULL,
   `foto` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
