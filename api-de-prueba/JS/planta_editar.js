@@ -6,16 +6,18 @@ var parts = []
 for (let i = 0; i < args.length; ++i) {
     parts[i] = args[i].split('=');
 }
+
 //decodeUriComponent elimina los caracteres especiales que recibe en la URL 
 document.getElementById("id").value = decodeURIComponent(parts[0][1])
 document.getElementById("nombreComun").value = decodeURIComponent(parts[1][1])
 document.getElementById("nombreCientif").value = decodeURIComponent(parts[2][1])
 document.getElementById("imagen").value =decodeURIComponent( parts[3][1])
 
+
 function modificar() {
     let id = document.getElementById("id").value
     let n = document.getElementById("nombreComun").value
-    let nc = parseInt(document.getElementById("nombreCientif").value)
+    let nc = document.getElementById("nombreCientif").value
     let i = document.getElementById("imagen").value
    
     let planta = {
@@ -23,7 +25,7 @@ function modificar() {
         nombreCientif: nc,
         imagen:i
     }
-    let url = "http://localhost:5000/plantas/"+id
+    let url = "http://localhost:5000/plantas/"+id 
     var options = {
         body: JSON.stringify(planta),
         method: 'PUT',
