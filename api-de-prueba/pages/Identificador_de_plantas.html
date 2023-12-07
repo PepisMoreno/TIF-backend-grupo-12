@@ -1,45 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=+, initial-scale=1.0">
     <title>Identificador de plantas</title>
-  <link rel="stylesheet" href="../css/styles.css"> <!--revisar acá cuál es la página de css correspondiente-->
-  
-  <link rel="shortcut icon" href="../img/favicon.ico"><!--alguien sabe qué es esto??? porque no sé si quedó de algun script de página o qué-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../../../Documents/Codo a codo/Trabajo grupal pag web/replantarvers2/css/styles.css">
+    
+  <link rel="shortcut icon" href="../img/favicon.ico">
   <script src="https://kit.fontawesome.com/3b21fc997b.js" crossorigin="anonymous"></script>  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Nanum+Gothic&display=swap');
   </style>
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 
-
-
-<body style="margin: 0; 
-display: flex;
-flex-direction: column;
-min-height: 100vh;">
-    <header style="display: flex;
-    background-color:#274427;
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    list-style-type: none;
-    z-index: 1000;">
+<body>
+    <header class="header">
        
         <div class="logo"><!--acá colocamos la img dentro de una etiqueta <a> para convertirla en un enlace -->
-            <a href="../index.html"><img style=" float: left; width: auto; height: 50px; transition: all 0.3s; " src="../img/logo1.png" alt="LOGO"></a>
+            <a href="../../../../Documents/Codo a codo/Trabajo grupal pag web/replantarvers2/index.html"><img style=" float: left; width: auto; height: 50px; transition: all 0.3s; " src="../img/logo1.png" alt="LOGO"></a>
         </div>
         <nav>
             <ul class="navegacion">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="formulario-de-contacto.html">Contacto</a></li>
-                <li><a href="nosotras.html">Nosotras</a></li>
-                <li><a href="tips.html">Tips comunidad</a></li>
+                <li><a href="../../../../Documents/Codo a codo/Trabajo grupal pag web/replantarvers2/index.html">Inicio</a></li>
+                <li><a href="../../../../Documents/Codo a codo/Trabajo grupal pag web/replantarvers2/pages/formulario-de-contacto.html">Contacto</a></li>
+                <li><a href="../../../../Documents/Codo a codo/Trabajo grupal pag web/replantarvers2/pages/nosotras.html">Nosotras</a></li>
+                <li><a href="../../../../Documents/Codo a codo/Trabajo grupal pag web/replantarvers2/pages/tips.html">Tips comunidad</a></li>
             </ul>
         </nav>
     </header>
@@ -57,15 +45,14 @@ min-height: 100vh;">
         text-align: center;
         padding-top: 1em;">Clasificación de Plantas</h1>
         <br>
-        <a class="btn btn-primary" href="planta_nueva.html" style="text-decoration: none; padding: 1em; font-size: 20px;">Agregar una nueva planta</a>
+        <a class="btn btn-primary" href="planta_nueva.html">Agregar una nueva planta</a>
         <br><br>
-        <div v-if="error">
-            <p>No se pudo establecer una conexión</p>
-        </div>
-            <div v-else>
+        <section v-if="error">No se pudo establecer una conexión</section>
+            <section v-else>
                 <section v-if="cargando">
                     <div class="spinner-border"></div>
                     <p>Cargando ...</p>
+
                 </section>
                 <section v-else>
                     <div class="table-responsive">
@@ -86,10 +73,10 @@ min-height: 100vh;">
                                     <td>{{planta.nombreCientif}}</td>
                                     <td>{{planta.imagen}}</td>
                                     <td>
-                                       <img width="60" :src="plantas.imagen" :alt="plantas.nombre">
+                                       <img width="60" :src="planta.imagen" :alt="planta.nombre">
                                     </td>
                                     <td>
-                                       <a class="btn btn-primary" href="planta_update.html?id='+planta.id" >Editar</a>
+                                        <a class="btn btn-primary" :href="'planta_update.html?id='+ planta.id+'&nombreComun=' +planta.nombreComun+ '&nombreCientif='+planta.nombreCientif+ '&imagen='+planta.imagen" >Editar</a> <!--acá editar-->
                                        <button type="button" class="btn btn-danger" v-on:click="eliminar(planta.id)" >Eliminar</button> <!--acá tenía un error en (planta.id) antes tenía plantas en plural-->
                                     </td>
                                 </tr>
@@ -101,14 +88,7 @@ min-height: 100vh;">
         </div>
     </main>
    
-    <footer style="background-color:black;
-                color:white;
-                font-family: 'Montserrat', sans-serif;
-                text-align: center;
-                margin-top: 1rem;
-                padding: 1.5rem;
-                bottom: 0;
-                margin-top: auto;">
+    <footer class="footer">
     <i class="fa-brands fa-facebook"></i>
     <i class="fa-brands fa-instagram"></i>
     <i class="fa-brands fa-whatsapp"></i>

@@ -2,10 +2,10 @@ const { createApp } = Vue
     createApp({
         data() {
             return {
-                plantas:[],
 //url:'http://localhost:5000/productos',
 // si el backend esta corriendo local usar localhost 5000(si no lo subieron a pythonanywhere)
                 url:'http://127.0.0.1:5000/plantas', 
+                plantas:[],
                 error:false,
                 cargando:true,
 /*atributos para guardar los valores del formulario */
@@ -15,12 +15,15 @@ const { createApp } = Vue
                 imagen:"",
             }
         },
+        created() {
+            this.fetchData(this.url)
+        },
         methods: {
             fetchData(url) {
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        this.plantas = data;
+                        this.plantas = data; //planta o plantas
                         this.cargando=false
                     })
                     .catch(err => {
@@ -38,31 +41,12 @@ const { createApp } = Vue
                     .then(res => {
                         location.reload();
                 })
-            },
-            grabar(){
-                let planta = {  //planta o plantas?? va el nombre de la tabla ahí? 
-                    nombreComun:this.nombreComun,
-                    nombreCientif:this.nombreCientif,
-                    imagen:this.imagen
-                }
-                var options = {
-                    body:JSON.stringify(planta),//planta o plantas??
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    redirect: 'follow'
-                }
-                fetch(this.url, options)
-                    .then(function () {
-                        alert("Registro grabado")
-                        window.location.href = "./identificador_de_plantas.html";   
-                    })
-                    .catch(err => {
-                        console.error(err);
-                        alert("Error al Grabar")
-                    })
             }
+
+
         },
-        created() {
-            this.fetchData(this.url)
-        },
-    }).mount('#app')
+        
+    
+    
+    
+      }).mount('#app')
