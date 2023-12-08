@@ -72,9 +72,8 @@
                                     <td scope="row">{{planta.id}}</td>
                                     <td>{{planta.nombreComun}}</td>
                                     <td>{{planta.nombreCientif}}</td>
-                                    <td>{{planta.imagen}}
-                                    
-                                       <img width="60" :src="planta.imagen" :alt="planta.nombre">
+                                    <td>
+                                       <img width="60" :src="planta.imagen" :alt="planta.nombre" accept="img">
                                     </td>
                                     <td>
                                         <a class="btn btn-primary" :href="'planta_editar.html?id='+ planta.id+'&nombreComun='+planta.nombreComun+'&nombreCientif='+planta.nombreCientif+'&imagen='+planta.imagen" >Editar</a> <!--acá editar-->
