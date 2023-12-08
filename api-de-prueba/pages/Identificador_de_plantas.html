@@ -76,7 +76,7 @@
                                        <img width="60" :src="planta.imagen" :alt="planta.nombre">
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" :href="'planta_update.html?id='+ planta.id+'&nombreComun=' +planta.nombreComun+ '&nombreCientif='+planta.nombreCientif+ '&imagen='+planta.imagen" >Editar</a> <!--acá editar-->
+                                        <a class="btn btn-primary" :href="'planta_editar.html?id='+ planta.id+'&nombreComun='+planta.nombreComun+'&nombreCientif='+planta.nombreCientif+'&imagen='+planta.imagen" >Editar</a> <!--acá editar-->
                                        <button type="button" class="btn btn-danger" v-on:click="eliminar(planta.id)" >Eliminar</button> <!--acá tenía un error en (planta.id) antes tenía plantas en plural-->
                                     </td>
                                 </tr>

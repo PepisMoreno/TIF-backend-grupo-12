@@ -3,7 +3,7 @@ var args = location.search.substr(1).split('&');
 //separa el string por los “&” creando una lista [“id=3” , “nombre=’tv50’” , ”precio=1200”,”stock=20”]
 console.log(args)
 var parts = []
-for (let i = 0; i < args.length; ++i) {
+for (let i = 0; i < args.length; ++i) { 
     parts[i] = args[i].split('=');
 }
 
