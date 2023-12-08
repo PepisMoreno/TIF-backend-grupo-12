@@ -46,7 +46,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
       <div class="mb-3">
         <label for="imagen">Imagen: </label>
         <input type="file" name="imagen" id="imagen" v-model="imagen">
-        <img width="100" :src="imagen" alt="">
+        <img width="100" :src="imagen" alt="" id="img">
       </div>
     <button type="button" class="btn btn-success" onclick="modificar()">Modificar</button>
 </form>
@@ -70,5 +70,6 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 crossorigin="anonymous"> </script>
 <script src="../JS/main.js"></script>
 <script src="../JS/planta_editar.js"></script>
+<script src="../JS/img.js"></script>
 </body>
 </html>
