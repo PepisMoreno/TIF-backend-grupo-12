@@ -60,7 +60,8 @@ crossorigin="anonymous">
     
             <div class="mb-3">
                 <label for="imagen">Imagen</label>
-                <input type="file" name="imagen" id="imagen">
+                <input type="file" name="imagen" id="imagen" v-model="imagen">
+                <img width="100" :src="imagen" alt="" id="img">
             </div>
             <button type="button" class="btn btn-success" onclick="guardar()">Agregar</button>
         </form>
@@ -86,6 +87,7 @@ crossorigin="anonymous">
         </script>
         <script src="../JS/main.js"></script>
         <script src="../JS/planta_nueva.js"></script>
+        <script src="../JS/img.js"></script>
         
 </body>
 </html>

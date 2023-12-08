@@ -20,6 +20,7 @@ from flask_sqlalchemy import SQLAlchemy
 # Importa la clase Marshmallow del módulo flask_marshmallow
 from flask_marshmallow import Marshmallow
 
+
 '''
 En este código, se está creando una instancia de la clase Flask y se está configurando para permitir el acceso cruzado entre dominios utilizando el módulo CORS.
 
