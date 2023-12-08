@@ -1,3 +1,4 @@
+
 '''
 Este código importa diferentes módulos y clases necesarios para el desarrollo de una aplicación Flask.
 
@@ -11,7 +12,7 @@ Al importar estos módulos y clases, estamos preparando nuestro entorno de desar
 
 '''
 # Importa las clases Flask, jsonify y request del módulo flask
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request
 # Importa la clase CORS del módulo flask_cors
 from flask_cors import CORS
 # Importa la clase SQLAlchemy del módulo flask_sqlalchemy
@@ -31,8 +32,6 @@ CORS(app): Se utiliza el módulo CORS para habilitar el acceso cruzado entre dom
 app = Flask(__name__)
 # Configura CORS para permitir el acceso desde el frontend al backend
 CORS(app)
-app.json.response() 
-#<Flask.json.provider.JSONProvider.response>
 
 '''
 En este código, se están configurando la base de datos y se están creando objetos para interactuar con ella utilizando SQLAlchemy y Marshmallow.
@@ -49,169 +48,154 @@ ma = Marshmallow(app): Se crea un objeto ma de la clase Marshmallow, que se util
 # Configura la URI de la base de datos con el driver de MySQL, usuario, contraseña y nombre de la base de datos
 # URI de la BD == Driver de la BD://user:password@UrlBD/nombreBD
 # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@localhost/proyecto"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/plantas_grupo12'
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:holamundo34@localhost/plantas3"
 # Configura el seguimiento de modificaciones de SQLAlchemy a False para mejorar el rendimiento
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Crea una instancia de la clase SQLAlchemy y la asigna al objeto db para interactuar con la base de datos
 db = SQLAlchemy(app)
 # Crea una instancia de la clase Marshmallow y la asigna al objeto ma para trabajar con serialización y deserialización de datos
 ma = Marshmallow(app)
 
-class Planta(db.Model):  # Producto hereda de db.Model
+#----------------------modelos---------------
+#defino la tabla
+class Plantas(db.Model):  # Plantas hereda de db.Model
     """
-    Definición de la tabla Producto en la base de datos.
-    La clase Producto hereda de db.Model.
-    Esta clase representa la tabla "planta" en la base de datos.
+    Definición de la tabla Plantas en la base de datos.
+    La clase Plantas hereda de db.Model.
+    Esta clase representa la tabla "Plantas" en la base de datos.
     """
     id = db.Column(db.Integer, primary_key=True)
-    nombre_comun = db.Column(db.String(100))
-    nombre_cientifico = db.Column(db.String(150))
-   # luz = db.Column(db.String(100))
-    foto = db.Column(db.String(100))
-    #suelo = db.Column(db.String(100))
-    #ubicacion = db.Column(db.String(100))
-    #imagen = db.Column(db.String(400))
+    nombreComun = db.Column(db.String(100))
+    nombreCientif = db.Column(db.String(100))
+    imagen = db.Column(db.String(400))
 
-    def __init__(self, nombre_comun, nombre_cientifico, foto):
+    def __init__(self, nombreComun, nombreCientif, imagen):
         """
-        Constructor de la clase Producto.
+        Constructor de la clase Plantas.
 
         Args:
-            nombre (str): Nombre del producto.
-            precio (int): Precio del producto.
-            stock (int): Cantidad en stock del producto.
-            imagen (str): URL o ruta de la imagen del producto.
+            nombreComun (str): Nombre de la planta.
+            nombreCientif (str): Nombre científico de la planta.
+            imagen (str): URL o ruta de la imagen de la planta.
         """
-        self.nombre_comun = nombre_comun
-        self.nombre_cientifico = nombre_cientifico
-        #self.luz = luz
-        #self.riego = riego
-        #self.suelo = suelo
-        #self.ubicacion = ubicacion
-        self.foto = foto
+        self.nombreComun = nombreComun
+        self.nombreCientif = nombreCientif
+        self.imagen = imagen
 
     # Se pueden agregar más clases para definir otras tablas en la base de datos
 
 with app.app_context():
-    db.create_all()  # Crea todas las tablas en la base de datos
+    db.create_all()  # Crea todas las tablas en la base de datos. Si la tabla ya está creada
+    # python y flask no la crean de nuevo cada vez que ejecuto
 
-# Definición del esquema para la clase Producto
-class PlantaSchema(ma.Schema):
+# Definición del esquema para la clase Plantas
+class PlantasSchema(ma.Schema):
     """
-    Esquema de la clase Producto.
+    Esquema de la clase Plantas.
 
     Este esquema define los campos que serán serializados/deserializados
-    para la clase Producto.
+    para la clase Plantas.
     """
     class Meta:
-        fields = ('id', 'nombre_comun', 'nombre_cientifico', 'foto')
+        fields = ("id", "nombreComun", "nombreCientif", "imagen")
 
-planta_schema = PlantaSchema()  # Objeto para serializar/deserializar un producto
-plantas_schema = PlantaSchema(many=True)  # Objeto para serializar/deserializar múltiples productos
+planta_schema = PlantasSchema()  # Objeto para serializar/deserializar un producto
+plantas_schema = PlantasSchema(many=True)  # Objeto para serializar/deserializar múltiples productos
 
 '''
 Este código define un endpoint que permite obtener todos los productos de la base de datos y los devuelve como un JSON en respuesta a una solicitud GET a la ruta /productos.
-@app.route("/productos", methods=["GET"]): Este decorador establece la ruta /productos para este endpoint y especifica que solo acepta solicitudes GET.
-def get_Productos(): Esta es la función asociada al endpoint. Se ejecuta cuando se realiza una solicitud GET a la ruta /productos.
+@app.route("/plantas", methods=["GET"]): Este decorador establece la ruta /productos para este endpoint y especifica que solo acepta solicitudes GET.
+def get_Productos(): Esta es la función asociada al endpoint. Se ejecuta cuando se realiza una solicitud GET a la ruta /plantas.
 all_productos = Producto.query.all(): Se obtienen todos los registros de la tabla de productos mediante la consulta Producto.query.all(). Esto se realiza utilizando el modelo Producto que representa la tabla en la base de datos. El método query.all() heredado de db.Model se utiliza para obtener todos los registros de la tabla.
 result = productos_schema.dump(all_productos): Los registros obtenidos se serializan en formato JSON utilizando el método dump() del objeto productos_schema. El método dump() heredado de ma.Schema se utiliza para convertir los objetos Python en representaciones JSON.
 return jsonify(result): El resultado serializado en formato JSON se devuelve como respuesta al cliente utilizando la función jsonify() de Flask. Esta función envuelve el resultado en una respuesta HTTP con el encabezado Content-Type establecido como application/json.
 
 '''
-@app.route('/plantas', methods=['GET'])
+@app.route("/plantas", methods=["GET"])
 def get_Plantas():
     """
-    Endpoint para obtener todos los productos de la base de datos.
+    Endpoint para obtener todas las plantas de la base de datos.
 
-    Retorna un JSON con todos los registros de la tabla de productos.
+    Retorna un JSON con todos los registros de la tabla de plantas.
     """
-    all_plantas = Planta.query.all()  # Obtiene todos los registros de la tabla de productos
+    all_plantas = Plantas.query.all()  # Obtiene todos los registros de la tabla de productos
     result = plantas_schema.dump(all_plantas)  # Serializa los registros en formato JSON
     return jsonify(result)  # Retorna el JSON de todos los registros de la tabla
-    return render_template('templates/Identidificador_de_plantas.html')
 
 '''
-El código que sigue a continuación termina de resolver la API de gestión de productos, a continuación se destaca los principales detalles de cada endpoint, incluyendo su funcionalidad y el tipo de respuesta que se espera.
+El código que sigue a continuación termina de resolver la API de gestión de plantas, a continuación se destaca los principales detalles de cada endpoint, incluyendo su funcionalidad y el tipo de respuesta que se espera.
 Endpoints de la API de gestión de productos:
-get_producto(id):
-    # Obtiene un producto específico de la base de datos
+get_Plantas(id):
+    # Obtiene una planta específica de la base de datos
     # Retorna un JSON con la información del producto correspondiente al ID proporcionado
-delete_producto(id):
-    # Elimina un producto de la base de datos
-    # Retorna un JSON con el registro eliminado del producto correspondiente al ID proporcionado
-create_producto():
+delete_Plantas(id):
+    # Elimina una planta de la base de datos
+    # Retorna un JSON con el registro eliminado de la planta correspondiente al ID proporcionado
+create_planta():
     # Crea un nuevo producto en la base de datos
     # Lee los datos proporcionados en formato JSON por el cliente y crea un nuevo registro de producto
     # Retorna un JSON con el nuevo producto creado
-update_producto(id):
+update_planta(id):
     # Actualiza un producto existente en la base de datos
     # Lee los datos proporcionados en formato JSON por el cliente y actualiza el registro del producto con el ID especificado
     # Retorna un JSON con el producto actualizado
 
 '''
-@app.route('/plantas/<id>', methods=['GET'])
+@app.route("/plantas/<id>", methods=["GET"])
 def get_planta(id):
     """
-    Endpoint para obtener un producto específico de la base de datos.
+    Endpoint para obtener una planta específico de la base de datos.
 
-    Retorna un JSON con la información del producto correspondiente al ID proporcionado.
+    Retorna un JSON con la información de la planta correspondiente al ID proporcionado.
     """
-    planta = Planta.query.get(id)  # Obtiene el producto correspondiente al ID recibido
-    return planta_schema.jsonify(planta)  # Retorna el JSON del producto
+    planta = Plantas.query.get(id)  # Obtiene la planta correspondiente al ID recibido
+    return planta_schema.jsonify(planta)  # Retorna el JSON de la planta
 
-@app.route('/plantas/<id>', methods=['DELETE'])
+@app.route("/plantas/<id>", methods=["DELETE"])
 def delete_planta(id):
     """
-    Endpoint para eliminar un producto de la base de datos.
+    Endpoint para eliminar una planta de la base de datos.
 
-    Elimina el producto correspondiente al ID proporcionado y retorna un JSON con el registro eliminado.
+    Elimina la planta correspondiente al ID proporcionado y retorna un JSON con el registro eliminado.
     """
-    planta = Planta.query.get(id)  # Obtiene el producto correspondiente al ID recibido
-    db.session.delete(planta)  # Elimina el producto de la sesión de la base de datos
+    planta = Plantas.query.get(id)  # Obtiene la planta correspondiente al ID recibido
+    db.session.delete(planta)  # Elimina la planta de la sesión de la base de datos
     db.session.commit()  # Guarda los cambios en la base de datos
-    return planta_schema.jsonify(planta)  # Retorna el JSON del producto eliminado
+    return planta_schema.jsonify(planta)  # Retorna el JSON de la planta eliminada
 
-@app.route('/plantas', methods=['POST'])  # Endpoint para crear un producto
+@app.route("/plantas", methods=["POST"])  # Endpoint para crear un producto
 def create_planta():
     """
-    Endpoint para crear un nuevo producto en la base de datos.
+    Endpoint para crear una nueva planta en la base de datos.
 
     Lee los datos proporcionados en formato JSON por el cliente y crea un nuevo registro de producto en la base de datos.
-    Retorna un JSON con el nuevo producto creado.
+    Retorna un JSON con la nueva planta creada
     """
-    nombre_comun = request.json['nombre_comun']  # Obtiene el nombre del producto del JSON proporcionado
-    nombre_cientifico = request.json['nombre_cientifico']  # Obtiene el precio del producto del JSON proporcionado
-    #luz = request.json["luz"]
-    #riego = request.json["riego"]
-    #suelo = request.json["riego"]
-    #ubicacion = request.json["ubicacion"]
-    foto = request.json['foto']  # Obtiene la imagen del producto del JSON proporcionado
-    new_planta = Planta(nombre_comun,nombre_cientifico,foto)  # Crea un nuevo objeto Producto con los datos proporcionados
-    db.session.add(new_planta)  # Agrega el nuevo producto a la sesión de la base de datos
+    nombreComun = request.json["nombreComun"]  # Obtiene el nombre de la planta del JSON proporcionado
+    nombreCientif = request.json["nombreCientif"]  # Obtiene el nombre científico de la planta del JSON proporcionado
+    imagen = request.json["imagen"]  # Obtiene la imagen de la planta del JSON proporcionado
+    new_planta = Plantas(nombreComun, nombreCientif, imagen)  # Crea un nuevo objeto Producto con los datos proporcionados
+    db.session.add(new_planta)  # Agrega la nueva planta a la sesión de la base de datos
     db.session.commit()  # Guarda los cambios en la base de datos
-    return planta_schema.jsonify(new_planta)  # Retorna el JSON del nuevo producto creado
+    return planta_schema.jsonify(new_planta)  # Retorna el JSON de la nueva planta creada
 
-@app.route("/plantas/<id>", methods=["PUT"])  # Endpoint para actualizar un producto
+@app.route("/plantas/<id>", methods=["PUT"])  # Endpoint para actualizar una planta
 def update_planta(id):
     """
-    Endpoint para actualizar un producto existente en la base de datos.
+    Endpoint para actualizar una planta existente en la base de datos.
 
     Lee los datos proporcionados en formato JSON por el cliente y actualiza el registro del producto con el ID especificado.
-    Retorna un JSON con el producto actualizado.
+    Retorna un JSON con la planta actualizada.
     """
-    planta = Planta.query.get(id)  # Obtiene el producto existente con el ID especificado
+    planta = Plantas.query.get(id)  # Obtiene la planta existente con el ID especificado
 
-    # Actualiza los atributos del producto con los datos proporcionados en el JSON
-    planta.nombre_comun = request.json['nombre_comun']
-    planta.nombre_cientifico = request.json['nombre_cientifico']
-    #planta.luz = request.json["luz"]
-    #planta.riego = request.json["riego"]
-    #planta.suelo = request.json["suelo"]
-    #planta.ubicacion = request.json["ubicacion"]
-    planta.foto = request.json['foto']
+    # Actualiza los atributos de la planta con los datos proporcionados en el JSON
+    planta.nombreComun = request.json["nombreComun"]
+    planta.nombreCientif = request.json["nombreCientif"]
+    planta.imagen = request.json["imagen"]
 
     db.session.commit()  # Guarda los cambios en la base de datos
-    return planta_schema.jsonify(planta)  # Retorna el JSON del producto actualizado
+    return planta_schema.jsonify(planta)  # Retorna el JSON de la planta actualizada
 
 '''
 Este código es el programa principal de la aplicación Flask. Se verifica si el archivo actual está siendo ejecutado directamente y no importado como módulo. Luego, se inicia el servidor Flask en el puerto 5000 con el modo de depuración habilitado. Esto permite ejecutar la aplicación y realizar pruebas mientras se muestra información adicional de depuración en caso de errores.
