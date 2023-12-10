@@ -14,6 +14,7 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" /> <!--datatable-->
 </head>
 
 <body>
@@ -44,7 +45,10 @@
         color: black;
         text-align: center;
         padding-top: 1em;">Clasificación de Plantas</h1>
+       
+       
         <br>
+        
         <a class="btn btn-primary" href="planta_nueva.html">Agregar una nueva planta</a>
         <br><br>
         <section v-if="error">No se pudo establecer una conexión</section>
@@ -56,7 +60,7 @@
                 </section>
                 <section v-else>
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table id="tablaplantas" class="table table-bordered">
                             <thead>
                                <tr>
                                     <th scope="col">Id</th>
@@ -69,7 +73,7 @@
                             <tbody>
                                <tr class="" v-for="planta in plantas">
                                     <td scope="row">{{planta.id}}</td>
-                                    <td>{{planta.nombreComun}}</td>
+                                    <td id="codigo">{{planta.nombreComun}}</td>
                                     <td>{{planta.nombreCientif}}</td>
                                     <td>
                                     
@@ -107,5 +111,28 @@ crossorigin="anonymous"></script>
     <script src="../JS/main.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script><!--Link de VUE-->
     <script src="../JS/plantas.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!--para datatable-->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script><!--para datatable-->
 </body>
+<script>
+$(document).ready( function () {
+    $('#tablaplantas').DataTable({
+        'bPaginate':true,
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar",
+            "paginate": {
+                "next":"Siguiente",
+                "previous": "Anterior",
+            }
+    },
+    });
+} );
+
+
+</script>
 </html>
