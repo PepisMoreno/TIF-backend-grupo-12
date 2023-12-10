@@ -9,6 +9,7 @@ const { createApp } = Vue
                 error:false,
                 cargando:true,
 /*atributos para guardar los valores del formulario */
+                
                 id:0,
                 nombreComun:"",
                 nombreCientif:"",
@@ -32,7 +33,7 @@ const { createApp } = Vue
                     })
             },
             eliminar(planta) {
-                const url = this.url+'/' + planta; //ver "planta" no se bien qué va ahí y qué le paso por parámetro a eliminar
+                const url = this.url+'/' + planta; 
                 var options = {
                     method: 'DELETE',
                 }

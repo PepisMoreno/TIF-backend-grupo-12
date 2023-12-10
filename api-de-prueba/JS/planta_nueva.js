@@ -1,4 +1,4 @@
-function guardar() {
+function guardar() { 
     let n = document.getElementById("nombreComun").value
     let nc = document.getElementById("nombreCientif").value
     let i = document.getElementById("imagen").value
@@ -27,4 +27,6 @@ function guardar() {
             alert("Error al grabar" )
             console.error(err);
         })
+        
 }
+
